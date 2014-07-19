@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="summary">Alphabetical</option>
+        <option value="id">Newest</option>
+      </select>
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="tasks">
+        <li ng-repeat="task in tasks | filter:query | orderBy:orderProp"
+            class="thumbnail task-listing">
+          <a href="#/tasks/{{task.id}}" class="thumb"><img ng-src="{{task.avatarUrl}}"></a>
+          <a href="#/tasks/{{task.id}}">{{task.summary}}</a>
+          <p>{{task.statusName}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
